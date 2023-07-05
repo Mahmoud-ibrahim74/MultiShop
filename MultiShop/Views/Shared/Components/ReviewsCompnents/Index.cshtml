@@ -1,0 +1,26 @@
+﻿@model List<MultiShop.Models.ReviewsProducts>
+
+@{
+    int count = 0;
+    count = Model.Count;
+    TempData["reviewCount"] = count;
+}
+@foreach (var item in Model)
+{
+    <br />
+    <hr />
+    <div class="media mb-4">
+        <div class="media-body">
+            <h6>@item.Name<small> - <i>@item.RevCreation</i></small></h6>
+            <div class="text-primary mb-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>@item.RevDescription</p>
+        </div>
+    </div>
+}
+

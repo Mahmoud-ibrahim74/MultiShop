@@ -1,0 +1,131 @@
+﻿@model IEnumerable<MultiShop.Models.Products>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/Theme.css" rel="stylesheet">
+</head>
+<body>
+    <partial name="_Notifications" />
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div style="width:500px" class="input-group">
+        <input id="filter_txt" type="text" onkeyup="filterProducts()" class="form-control" placeholder="Search for Table products">
+        <div class="input-group-append">
+            <span class="input-group-text bg-transparent text-primary">
+                <i class="fa fa-search"></i>
+            </span>
+        </div>
+    </div>
+    <table id="ProductTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th class="table-primary">
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th class="table-secondary" width="200">
+                    <p>@Html.DisplayNameFor(model => model.ProductDescription)</p>
+                </th>
+                <th class="table-success">
+                    @Html.DisplayNameFor(model => model.ProductSize)
+                </th>
+                <th class="table-danger">
+                    @Html.DisplayNameFor(model => model.ProductColor)
+                </th>
+                <th class="table-warning">
+                    @Html.DisplayNameFor(model => model.ProductPrice)
+                </th>
+
+                <th class="table-info">
+                    @Html.DisplayNameFor(model => model.ProductCreation)
+                </th>
+                <th class="table-light">
+                    @Html.DisplayNameFor(model => model.ProductCategories)
+                </th>
+                <th class="table-primary">
+                    @Html.DisplayNameFor(model => model.PrimaryImg)
+                </th>
+                <th class="table-primary">
+                    @Html.DisplayNameFor(model => model.img2_name)
+                </th>
+                <th class="table-primary">
+                    @Html.DisplayNameFor(model => model.img3_name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="table-primary">
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td class="table-secondary">
+                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                    </td>
+                    <td class="table-success">
+                        @Html.DisplayFor(modelItem => item.ProductSize)
+                    </td>
+                    <td class="table-danger">
+                        @Html.DisplayFor(modelItem => item.ProductColor)
+                    </td>
+                    <td class="table-warning">
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+
+                    <td class="table-info">
+                        @Html.DisplayFor(modelItem => item.ProductCreation)
+                    </td>
+                    <td class="table-light">
+                        @Html.DisplayFor(modelItem => item.ProductCategories)
+                    </td>
+                    <td class="table-primary">
+                        <img src="~/img/ProductsImages/@item.PrimaryImg" width="50" height="50">
+                    </td>
+                    <td class="table-primary">
+                        <img src="~/img/ProductsImages/@item.img2_name" width="50" height="50">
+                    </td>
+                    <td class="table-primary">
+                        <img src="~/img/ProductsImages/@item.img3_name" width="50" height="50">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary"><a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a></button>
+                        <button class="btn btn-warning"><a asp-action="Details" asp-route-id="@item.ProductId">Details</a></button>
+                        <button class="btn btn-danger"> <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function filterProducts() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("filter_txt");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("ProductTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

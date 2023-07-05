@@ -1,0 +1,31 @@
+﻿@model List<MultiShop.Models.Categories>
+@{
+    int  i =0;
+    string title = "";
+}
+@foreach (var item in Model)
+{
+    if (ViewBag.CategCount[i] <2)
+    {
+        title = "Product";
+    }
+    else
+    {
+        title = "Products";
+    }
+    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+        <a asp-area="Shop" asp-controller="Shop" asp-action="Index" asp-route-id="@item.CategoryId" class="text-decoration-none" >
+            <div class="cat-item d-flex align-items-center mb-4">
+                <div class="overflow-hidden" style="width: 100px; height: 100px;border-radius:2px;border:1px solid #a39393;">
+                    <img class="img-fluid" src="@item.imageSrc" alt="">
+                </div>
+                <div class="flex-fill pl-3">
+                    <h6>@item.CategoryName</h6>
+                    <small class="text-body">@ViewBag.CategCount[i] @title</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    i++;
+}
+

@@ -1,0 +1,269 @@
+﻿@model MultiShop.Models.Products
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+    TempData["SelectedOption"] = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Create Product</title>
+
+    <!-- Icons font CSS-->
+    <link href="~/ProductsLib/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/ProductsLib/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="~/ProductsLib/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/ProductsLib/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/ProductsLib/css/main.css" rel="stylesheet" media="all">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+</head>
+<body>
+
+
+    @*    <div class="row">
+    <div class="col-md-4">
+    <form asp-action="Create" method="post" enctype="multipart/form-data" id="uploadform">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+    <label asp-for="ProductName" class="control-label"></label>
+    <input asp-for="ProductName" class="form-control" />
+    <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label asp-for="ProductDescription" class="control-label"></label>
+    <input asp-for="ProductDescription" class="form-control" />
+    <span asp-validation-for="ProductDescription" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label asp-for="ProductSize" class="control-label"></label>
+    <input asp-for="ProductSize" class="form-control" />
+    <span asp-validation-for="ProductSize" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label asp-for="ProductColor" class="control-label"></label>
+    <input asp-for="ProductColor" class="form-control" />
+    <span asp-validation-for="ProductColor" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label asp-for="ProductPrice" class="control-label"></label>
+    <input asp-for="ProductPrice" class="form-control" />
+    <span asp-validation-for="ProductPrice" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label asp-for="ProductCreation" class="control-label"></label>
+    <input asp-for="ProductCreation"  class="form-control" />
+    <span asp-validation-for="ProductCreation" class="text-danger"></span>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <div class="col-xs-12">
+    <div class="box">
+    <!-- /.box-header -->
+    <div class="box-body">
+    <div style="width:150px" class="form-group row">
+    <label for="" class="col-sm-2 form-control-label">Categories</label>
+    <select onchange="val()" asp-for="ProductCategories" style="width:150px" class="form-control selectpicker" id="select-Categ" data-live-search="true">
+    @await Component.InvokeAsync("CategoreyDropDown")
+    </select>
+    </div>
+    </div>
+    <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+    </div>
+    </div>
+    <br />
+    <hr />
+    <div class="form-group">
+    <label for="formFile" class="form-label mt-4">Choose Product Image 1</label>
+    <input asp-for="clientFile" accept="image/*" class="filepond" type="file"  id="formFile" multiple>
+    </div>
+    <div>
+    <img id="MyImg1" src="#" alt="Paris" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;">
+    <img id="MyImg2" src="#" alt="Paris" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;">
+    <img id="MyImg3" src="#" alt="Paris" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;">
+    </div>
+
+    <div class="form-group">
+    <button type="submit" value="Create" class="btn btn-primary">Create</button>
+    </div>
+    </form>
+    </div>
+    </div>
+
+    <div>
+    </div>*@
+    <!-- ************************************************************************************************************* -->
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Registration Form</h2>
+                    <form asp-action="Create" method="post" enctype="multipart/form-data" id="uploadform">
+                        <div asp-validation-summary="All" style="color:red" class="text-danger"></div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductName" class="control-label"></label>
+                                    <input asp-for="ProductName" class="form-control" style="border:1px #222 solid" />
+                                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductDescription" class="control-label"></label>
+                                    <input asp-for="ProductDescription" class="form-control" style="border:1px #222 solid" />
+                                    <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductSize" class="control-label"></label>
+                                    <input asp-for="ProductSize" class="form-control" style="border:1px #222 solid" />
+                                    <span asp-validation-for="ProductSize" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductColor" class="control-label"></label>
+                                    <input asp-for="ProductColor" class="form-control" style="border:1px #222 solid" />
+                                    <span asp-validation-for="ProductColor" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductPrice" class="control-label"></label>
+                                    <input asp-for="ProductPrice" class="form-control" style="border:1px #222 solid" />
+                                    <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label asp-for="ProductCreation" class="control-label"></label>
+                                    <input asp-for="ProductCreation" class="form-control"  />
+                                    <span asp-validation-for="ProductCreation" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Categoery</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select onchange="val()" asp-for="ProductCategories" style="width:150px" class="form-control selectpicker" id="select-Categ" data-live-search="true">
+                                    @await Component.InvokeAsync("CategoreyDropDown")
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="clientFile" multiple accept="image/*" class="form-control" type="file" id="formFile">
+                            <label asp-for="PrimaryImg" class="control-label"></label>
+                            <br />
+                            <label asp-for="img2_name" class="control-label"></label>
+                            <br />
+                            <label asp-for="img3_name" class="control-label"></label>
+
+                        </div>
+                        <div class="p-t-15">
+                            <button type="submit" value="Create" class="btn btn--radius-2 btn--blue">Add</button>
+                        </div>
+                        <div class="col-2">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function SelcetChange(d) {
+            $.ajax({
+                url: '@Url.Action("SetTempData","Products")',
+                method: "post",
+                datatype: "json",
+                headers: {
+                    "RequestVerificationToken": $('input[name = __RequestVerificationToken]').val()
+                },
+                data: { tempDataValue: '' + d + '' }
+            });
+        }
+        function val() {
+            d = document.getElementById("select-Categ").value;
+            SelcetChange(d);
+            console.log(d);
+        }
+        //$(document).ready(function (e) {
+        //    pond = FilePond.create(
+        //        document.querySelector('#formFile'), {
+        //        allowMultiple: true,
+        //        instantUpload: false,
+        //        allowProcess: false
+        //    });
+
+            //$("#uploadform").submit(function (e) {
+            //    var formdata = new FormData(this);
+            //    // append FilePond files into the form data
+            //    pondFiles = pond.getFiles();
+            //    for (var i = 0; i < pondFiles.length; i++) {
+            //        // append the blob file
+            //        formdata.append('formFile', pondFiles[i].file);
+            //    }
+
+            //    $.ajax({
+            //        url: '@Url.Action("Create","Products")',
+            //        data: formdata,
+
+            //        processData: false,
+            //        contentType: false,
+            //        method: "post"
+            //    });
+
+            //})
+      //  });
+    </script>
+</body>
+
+</html>

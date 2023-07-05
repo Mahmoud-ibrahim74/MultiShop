@@ -1,0 +1,13 @@
+﻿@using MultiShop.ShopDbContext;
+@model List<MultiShop.Models.Categories>
+
+@{
+    int i = 0;
+}
+@foreach (var item in Model)
+{
+    <a asp-area="Shop" asp-controller="Shop" asp-action="Index" asp-route-id="@item.CategoryId" class="nav-item nav-link">@item.CategoryName   (@ViewBag.CategCount[i]) </a>
+    i++;
+}
+
+

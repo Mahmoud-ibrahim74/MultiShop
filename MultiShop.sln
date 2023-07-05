@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop", "MultiShop\MultiShop.csproj", "{EC0AEAF9-A5F0-4D3A-9313-B553B8B8B815}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC0AEAF9-A5F0-4D3A-9313-B553B8B8B815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC0AEAF9-A5F0-4D3A-9313-B553B8B8B815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC0AEAF9-A5F0-4D3A-9313-B553B8B8B815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC0AEAF9-A5F0-4D3A-9313-B553B8B8B815}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AE66258-9B7A-410E-B3A2-8CF369A43FA8}
+	EndGlobalSection
+EndGlobal

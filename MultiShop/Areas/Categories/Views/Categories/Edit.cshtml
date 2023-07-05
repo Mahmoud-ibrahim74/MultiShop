@@ -1,0 +1,89 @@
+﻿@model MultiShop.Models.Categories
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Categories</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+            <form method="post" enctype="multipart/form-data">
+                @*this enctype to work with files*@
+                <div asp-validation-summary="All" style="color:red"></div>
+                <div class="border p-3 mt-4">
+                    <h2 class="text-primary">Edit Item</h2>
+                    <div class="mb-3">
+                        <label asp-for="CategoryName"></label>
+                        <input asp-for="CategoryName" class="form-control" />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                        <br />
+                        <br />
+                        <label asp-for="CategoryDescription"></label>
+                        <input asp-for="CategoryDescription" class="form-control" />
+                        <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+                        <br />
+                        <label asp-for="CategoriesDate"></label>
+                        <input asp-for="CategoriesDate" type="date" class="form-control" />
+                        <span asp-validation-for="CategoriesDate" class="text-danger"></span>
+                        <div class="form-group">
+                            <label for="formFile" class="form-label mt-4">Choose File</label>
+                            <input asp-for="clientFile" class="form-control" type="file" id="formFile">
+                        </div>
+                        <div>
+                            <img id="MyImg"  src="@Model.imageSrc" alt="Paris" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 150px;">
+                        </div>
+                        @*  <div class="form-group">
+                        <label  class="form-label mt-4"></label>
+                        <select asp-for="Category" class="form-select" id="cat_values" asp-items="@ViewBag.CategoeryItems">
+                        </select>
+                        </div>*@
+                        <br />
+                        <hr />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a asp-controller="Items" asp-action="Index" class="btn btn-secondary">back</a>
+                </div>
+            </form>
+        </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+<script>
+
+    document.getElementById('formFile').onchange = function (evt) {
+        var tgt = evt.target || window.event.srcElement,
+            files = tgt.files;
+
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                document.getElementById('MyImg').src = fr.result;
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    }
+
+</script>
+</html>

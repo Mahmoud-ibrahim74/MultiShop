@@ -1,0 +1,28 @@
+﻿@model MultiShop.Models.ReviewsProducts
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <div class="col-md-4">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        @using (Html.BeginForm("AddReviews", "ProductDetails", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="message">Your Review *</label>
+                @Html.TextAreaFor(x => x.Name);
+                <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                @Html.TextBoxFor(x => x.Name);
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email *</label>
+                @Html.TextBoxFor(x => x.email);
+
+            </div>
+            <div class="form-group mb-0">
+                <button type="submit"  class="btn btn-primary px-3">Leave Your Review</button>
+            </div>
+        }
+
+    </div>
+</div>

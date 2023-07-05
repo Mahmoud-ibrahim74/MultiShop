@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MultiShop.Models.Categories>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/Theme.css" rel="stylesheet">
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="table-primary">
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th  class="table-secondary">
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryDescription)
+                </th class="table-success">
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoriesDate)
+                </th>
+                <th class="table-danger">
+                    @Html.DisplayNameFor(model => model.CategoryImg)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="table-primary">
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryDescription)
+                    </td>
+                    <td  class="table-secondary">
+                        @Html.DisplayFor(modelItem => item.CategoriesDate)
+                    </td>
+                    <td class="table-danger">
+                        <img src="@Html.DisplayFor(modelItem => item.imageSrc)" width="50" height="50">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary"><a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a></button>|
+                        <button class="btn btn-warning"><a asp-action="Details" asp-route-id="@item.CategoryId">Details</a></button>|
+                        <button class="btn btn-danger"> <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a></button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
